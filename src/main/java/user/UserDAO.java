@@ -88,7 +88,6 @@ public class UserDAO {
 	public int register(String userID, String userPassword, String userName, String userAge, String userGender, String userEmail, String userProfile) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = dataSource.getConnection();
@@ -100,18 +99,11 @@ public class UserDAO {
 			pstmt.setString(5, userGender);
 			pstmt.setString(6, userEmail);
 			pstmt.setString(7, userProfile);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next() || userID.equals("")) {
-				return 0; // duplication
-			} else {
-				return 1; // possible
-			}
+			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (null != rs) rs.close();
 				if (null != pstmt) pstmt.close();
 				if (null != conn) conn.close();
 			} catch(Exception e) {
