@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+*{
+	font-family: 'Nanum Gothic';
+}
+
+h5{
+	font-family: 'Noto Sans KR';
+	font-size: 15px;
+}
+h4{
+	font-family: 'Noto Sans KR';
+}
+h3{
+	font-family: 'Hanna';
+}
+h2{
+	font-family: 'Hanna';
+}
+h1{
+	font-family: 'Hanna';
+}
+
+/* 테이블 관련 디자인 처리 */
+thead th {
+	background-color: #006DCC;
+	color:navajowhite;
+	text-align: center;
+}
+
+tr td:first-child,
+tr th:first-chile{
+	border-top-left-radius:6px;
+	border-bottom-left-radius: 6px;
+}
+
+tr td:last-child,
+tr th:last-chile{
+	border-top-right-radius:6px;
+	border-bottom-right-radius: 6px;
+}
