@@ -19,11 +19,11 @@
 				data: {userID: userID},
 				success: function(result){
 					if (1 == result){
-						$('#checkMessage').html('사용 가능한 ID 입니다')
-						$('#checkType').attr('class', 'modal-content panel-success');
+					    $('#checkMessage').html('사용 가능한 ID 입니다');
+					    $('#checkType').attr('class', 'modal-content panel-success');
 					} else {
-						$('#checkMessage').html('사용할 수 없는 ID 입니다')
-						$('#checkType').attr('class', 'modal-content panel-warning');
+					    $('#checkMessage').html('사용할 수 없는 ID 입니다');
+					    $('#checkType').attr('class', 'modal-content panel-warning');
 					}
 					$('#checkModal').modal("show");
 				}
@@ -46,6 +46,12 @@
 		String userID = null;
 		if (null != session.getAttribute("userID")){
 			userID = (String) session.getAttribute("userID");
+		}
+		if (null != userID){
+			session.setAttribute("messageType", "오류 메세지");
+			session.setAttribute("messageContent", "현재 로그인이 되어있습니다");
+			response.sendRedirect("index.jsp");
+			return;
 		}
 	%>
 	<nav class="navbar navbar-default">
@@ -79,23 +85,12 @@
 						</li>
 					</ul>
 			<%
-				} else {
-			%>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">회원관리<span class="caret"></span>
-							</a>
-						</li>
-					</ul>
-			<%
 				}
 			%>
 		</div>
 	</nav>
 	<div class="container">
-		<form method="post" action="./userRegister">
+		<form method="post" action="./UserRegisterServlet">
 			<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
@@ -106,7 +101,7 @@
 					<tr>
 						<td style="width: 110px;"><h5>아이디</h5></td>
 						<td><input class="form-control" type="text" id="userID" name="userID" maxlength="20" placeholder="아이디"></td>
-						<td style="width: 110px;"><button class="btn btn-primary" onclick="registerCheckFunction();" type="button">중복체크</button></td>
+						<td style="width: 110px;"><button class="btn btn-primary" type="button" onclick="registerCheckFunction()">중복체크</button></td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호</h5></td>
