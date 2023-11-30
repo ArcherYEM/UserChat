@@ -68,7 +68,7 @@ public class ChatDAO {
 		return chatList;
 	}
 	
-	public ArrayList<ChatDTO> getChatListByResent(String fromID, String toID, int number){
+	public ArrayList<ChatDTO> getChatListByRecent(String fromID, String toID, int number){
 		ArrayList<ChatDTO> chatList = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
