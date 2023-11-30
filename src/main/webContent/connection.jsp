@@ -11,7 +11,7 @@
 		Statement stmt = conn.createStatement();
 		ResultSet rset = stmt.executeQuery("SELECT VERSION();");
 		while(rset.next()){
-			out.println("MySQL Version: " + rset.getString("version()"));
+			out.println("MySQL Version: " + rset.getString("version"));
 		}
 		rset.close();
 		stmt.close();
