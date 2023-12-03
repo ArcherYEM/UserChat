@@ -15,7 +15,7 @@
 		
 		if (null == userID){
 			session.setAttribute("messageType", "오류 메세지");
-			session.setAttribute("messageContent", "현재 로그인이 되어있지 않습니다");
+			session.setAttribute("messageContent", "현재 로그인 되어있지 않습니다");
 			response.sendRedirect("index.jsp");
 			return;
 		}
